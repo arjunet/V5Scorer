@@ -1,0 +1,81 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<HomeScreen>:
+    # Top homescreen text
+    AnchorLayout:
+        anchor_x: 'left'
+        anchor_y: 'top'
+        padding: [20, 50, 20, 20]
+        size_hint: 1.0, None
+        pos_hint: {'center_y': 0.92}
+        height: dp(100)
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            adaptive_height: True
+            spacing: dp(50)
+
+            # Title
+            MDLabel:
+                text: "Scoring"
+                role: "large"
+                font_style: "Title"
+                text_color: "#e6e0e9"
+
+            # Subtitle
+            MDLabel:
+                text: "VEX V5 · Photo scoring"
+                text_color: "#cac4d0"
+
+    # Scroll Content
+    ScrollView:
+        do_scroll_x: False
+        padding: [0, 40, 0, 0]
+        pos_hint: {'x': 0, 'top': 0.82}
+        size_hint: 1.0, 0.82
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            adaptive_height: True
+            spacing: dp(50)
+            padding: [dp(20), dp(20), dp(20), dp(20)]
+
+            # Card image
+            MDCard:
+                id: card
+                size_hint_x: 0.922
+                size_hint_y: None
+                height: dp(280)
+                pos_hint: {'center_x': 0.5}
+                corner_radius: [24, 24, 24, 24]
+                elevation: 4
+                md_bg_color: "#1d1b20"
+
+                FloatLayout:
+                    size_hint: 1, 1
+                    pos_hint: {'x': 0, 'y': 0}
+
+                    # Image on card
+                    FitImage:
+                        source: "assets/default_field.png"
+                        radius: [24, 24, 24, 24]
+                        size_hint: 1, 1
+                        pos_hint: {'x': 0, 'y': 0}
+                        allow_stretch: True
+                        keep_ratio: False
+
+                    # Take picture FAB
+                    MDExtendedFabButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.25}
+                        fab_state: "expand"
+                        radius: [35, 35, 35, 35]
+                        theme_bg_color: "Custom"
+                        md_bg_color: get_color_from_hex("#d0bcff")
+
+                        MDExtendedFabButtonIcon:
+                            icon: "camera"
+                            color: "#381e72"
+
+                        MDExtendedFabButtonText:
+                            text: "take field photo"
+                            color: "#381e72"
